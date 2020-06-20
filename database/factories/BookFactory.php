@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Book::class, function (Faker $faker) {
     return [
-        'title' => $faker->title,
+        'title' => $faker->sentence(6),
         'author_id' => rand(1, App\Author::count()),
         'abstract' => $faker->paragraph(10)
     ];

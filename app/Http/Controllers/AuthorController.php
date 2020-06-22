@@ -35,7 +35,7 @@ class AuthorController extends Controller
         ]);
         // if validation passes, create a new author from the validated
         // data and return it
-        return response(Author::create($data), 201);
+        return response(new AuthorResource(Author::create($data)), 201);
     }
 
     /**
@@ -46,7 +46,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        return response($author, 200);
+        return response(new AuthorResource($author), 200);
     }
 
     /**

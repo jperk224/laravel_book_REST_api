@@ -22,3 +22,9 @@ use Illuminate\Support\Facades\Route;
 // Return all resources
 Route::get('authors', 'AuthorController@index');  // return all authors
 Route::get('books', 'BookController@index');    // return all books
+
+// Return individual resources
+Route::get('authors/{author}', 'AuthorController@show');    // return an individual author
+
+// Store new records
+Route::post('authors', 'AuthorController@store');   // add an author

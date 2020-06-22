@@ -19,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+// Return all resources
 Route::get('authors', 'AuthorController@index');  // return all authors
 Route::get('books', 'BookController@index');    // return all books

@@ -28,3 +28,10 @@ Route::get('authors/{author}', 'AuthorController@show');    // return an individ
 
 // Store new records
 Route::post('authors', 'AuthorController@store');   // add an author
+
+// Update records --> accepts both PUT and PATCH
+Route::put('authors/{author}', 'AuthorController@update');
+Route::patch('authors/{author}', 'AuthorController@update');
+
+// Delete records
+Route::delete('authors/{author}', 'AuthorController@destroy');

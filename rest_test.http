@@ -1,0 +1,38 @@
+### All Authors
+GET http://localhost:8000/api/authors/
+
+### Single Author
+http://localhost:8000/api/authors/3
+
+### All books
+http://localhost:8000/api/books/
+
+### First POST request
+POST http://localhost:8000/api/authors/
+Content-Type: application/json
+
+{
+    "name": "Jonathan Barrios",
+    "title": "Software Development Instructor",
+    "company": "Treehouse",
+    "email": "workemail@teamtreehouse.com"
+}
+
+### First Author PUT request
+POST http://localhost:8000/api/authors/1?_method=PUT
+Content-Type: application/json
+
+{
+    "name": "Guil Hernandez",
+    "title": "Software Developer Instructor",
+    "company": "Treehouse",
+    "email": "workemail@treehouse.net"
+}
+
+### PATCH Request (DOES NOT WORK presently)
+POST http://localhost:8000/api/authors/1?_method=PATCH
+Content-Type: application/json
+
+{
+    "name": "Bobby Stephenson",
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Http\Resources\AuthorResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AuthorController extends Controller
 {
@@ -27,7 +28,7 @@ class AuthorController extends Controller
     public function store(Request $request)
     {
         // Validate the request
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
             'name' => 'required',
             'title' => 'required',
             'company' => 'required',
@@ -35,7 +36,7 @@ class AuthorController extends Controller
         ]);
         // if validation passes, create a new author from the validated
         // data and return it
-        return response(new AuthorResource(Author::create($data)), 201);
+        return response(new AuthorResource(Author::create($validate->validate())), 201);
     }
 
     /**
@@ -59,15 +60,15 @@ class AuthorController extends Controller
     public function update(Request $request, Author $author)
     {
         // Validate the request
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
             'name' => 'required',
             'title' => 'required',
             'company' => 'required',
             'email' => 'required'
         ]);
         // if validation passes, update the authoer and return it
-        $author->update($data);
-        return response($author->update($data), 200);
+        $author->update($validate->validate());
+        return response(new AuthorResource($author), 201);
     }
 
     /**

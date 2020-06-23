@@ -36,3 +36,13 @@ Content-Type: application/json
 {
     "name": "Bobby Stephenson",
 }
+
+### First DELETE request
+DELETE http://localhost:8000/api/authors/2
+
+### All Books
+GET http://localhost:8000/api/books
+
+### Single Book
+GET http://localhost:8000/api/books/1
+

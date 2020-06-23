@@ -12,7 +12,7 @@ POST http://localhost:8000/api/authors/
 Content-Type: application/json
 
 {
-    "name": "Jonathan Barrios",
+    "name": "",
     "title": "Software Development Instructor",
     "company": "Treehouse",
     "email": "workemail@teamtreehouse.com"

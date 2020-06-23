@@ -20,24 +20,34 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// Return all resources
-Route::get('authors', 'AuthorController@index');  // return all authors
-Route::get('books', 'BookController@index');    // return all books
+// Route::prefix('authors')->group(function() {
+//     Route::get('authors', 'AuthorController@index');  // return all authors
+//     Route::get('authors/{author}', 'AuthorController@show');    // return an individual author
+//     Route::post('authors', 'AuthorController@store');   // add an author
+//     Route::put('authors/{author}', 'AuthorController@update');
+//     Route::patch('authors/{author}', 'AuthorController@update');
+//     Route::delete('authors/{author}', 'AuthorController@destroy');
+// });
 
-// Return individual resources
-Route::get('authors/{author}', 'AuthorController@show');    // return an individual author
-Route::get('books/{book}', 'BookController@show');    // return an individual book
+// One line of code does the above ^^
+// Route::apiResource('authors', 'AuthorController');
 
-// Store new records
-Route::post('authors', 'AuthorController@store');   // add an author
-Route::post('books', 'BookController@store');   // add a book
+// // Return all resources
+// Route::get('books', 'BookController@index');    // return all books
+// // Return individual resources
+// Route::get('books/{book}', 'BookController@show');    // return an individual book
+// // Store new records
+// Route::post('books', 'BookController@store');   // add a book
+// // Update records --> accepts both PUT and PATCH
+// Route::put('books/{book}', 'BookController@update');
+// Route::patch('books/{book}', 'BookController@update');
+// // Delete records
+// Route::delete('books/{book}', 'BookController@destroy');
 
-// Update records --> accepts both PUT and PATCH
-Route::put('authors/{author}', 'AuthorController@update');
-Route::patch('authors/{author}', 'AuthorController@update');
-Route::put('books/{book}', 'BookController@update');
-Route::patch('books/{book}', 'BookController@update');
+// Route::apiResource('books', 'BookController');
 
-// Delete records
-Route::delete('authors/{author}', 'AuthorController@destroy');
-Route::delete('books/{book}', 'BookController@destroy');
+// Further refactoring
+Route::apiResources([
+    'authors' => 'AuthorController',
+    'books' => 'BookController'
+]);
